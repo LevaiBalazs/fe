@@ -11,6 +11,31 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ProductsComponent implements OnInit, OnDestroy {
 
+  language = 'en'
+
+  translations: { [key: string]: { [key: string]: string } } = {
+    en: {
+      TITLE: 'Product Customization',
+      NAME: 'Name',
+      CATEGORY: 'Category',
+      DESCRIPTION: 'Description',
+      PRICE: 'Price',
+      ADD: 'Add',
+      UPDATE: 'Update',
+      DELETE: 'Delete'
+    },
+    hu: {
+      TITLE: 'Termék szerkesztés',
+      NAME: 'Név',
+      CATEGORY: 'Kategória',
+      DESCRIPTION: 'Leírás',
+      PRICE: 'Ár',
+      ADD: 'Hozzáadás',
+      UPDATE: 'Frissítés',
+      DELETE: 'Törlés'
+    }
+  }
+
 
   oszlopok = [
     { key: "category", text: "Category", type: "text" },
@@ -28,6 +53,14 @@ export class ProductsComponent implements OnInit, OnDestroy {
   errorText = "";
 
   constructor(private api: ApiService) {}
+
+  switchLanguage(lang: string) {
+    this.language = lang
+  }
+
+  translate(key: string): string {
+    return this.translations[this.language][key] || key
+  }
 
   ngOnInit(): void {
     this.getProduct();

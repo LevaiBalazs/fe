@@ -1,11 +1,21 @@
-<!-- {{products|json}} -->
+
 <div class="container">
+
+    <div class="d-flex justify-content-between mb-4">
+        <div>
+          <button class="btn btn-primary me-2" (click)="switchLanguage('en')">{{translate('English')}}</button>
+          <button class="btn btn-secondary" (click)="switchLanguage('hu')">{{translate('Magyar')}}</button>
+        </div>
+        <h1>{{translate('TITLE')}}</h1>
+      </div>
+
+
         <div class="row fw-bold my-3">
           <div *ngFor="let oszlop of oszlopok" class="col">
-            {{oszlop.text}}
+            {{translate(oszlop.text)}}
           </div>
           <div class="col">
-            Actions
+            {{translate('ACTIONS')}}
           </div>
           </div>
 
@@ -14,7 +24,7 @@
             <input [(ngModel)]="newProduct[oszlop.key]" [type]="oszlop.type" class="form-control">
           </div>
           <div class="col">
-            <button (click)="createProduct()" type="button" class="btn btn-primary btn-sm">Add</button>
+            <button (click)="createProduct()" type="button" class="btn btn-primary btn-sm">{{translate('ADD')}}</button>
           </div>
         </div>
     
@@ -23,8 +33,8 @@
             <input [(ngModel)]="item[oszlop.key]" [type]="oszlop.type" class="form-control">
           </div>
           <div class="col">
-              <button (click)="updateProduct(item)" type="button" class="btn btn-warning btn-sm">Update</button>
-              <button (click)="deleteProduct(item.id)" type="button" class="ms-3 btn btn-danger btn-sm">Delete</button>
+              <button (click)="updateProduct(item)" type="button" class="btn btn-warning btn-sm">{{translate('UPDATE')}}</button>
+              <button (click)="deleteProduct(item.id)" type="button" class="ms-3 btn btn-danger btn-sm">{{translate('DELETE')}}</button>
           </div>
         </div>
     
