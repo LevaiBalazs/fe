@@ -1,0 +1,37 @@
+<!-- {{products|json}} -->
+<div class="container">
+        <div class="row fw-bold my-3">
+          <div *ngFor="let oszlop of oszlopok" class="col">
+            {{oszlop.text}}
+          </div>
+          <div class="col">
+            Actions
+          </div>
+          </div>
+
+        <div  class="row my-1">
+          <div *ngFor="let oszlop of oszlopok" class="col">
+            <input [(ngModel)]="newProduct[oszlop.key]" [type]="oszlop.type" class="form-control">
+          </div>
+          <div class="col">
+            <button (click)="createProduct()" type="button" class="btn btn-primary btn-sm">Add</button>
+          </div>
+        </div>
+    
+        <div *ngFor="let item of products" class="row my-1">
+          <div *ngFor="let oszlop of oszlopok" class="col">
+            <input [(ngModel)]="item[oszlop.key]" [type]="oszlop.type" class="form-control">
+          </div>
+          <div class="col">
+              <button (click)="updateProduct(item)" type="button" class="btn btn-warning btn-sm">Update</button>
+              <button (click)="deleteProduct(item.id)" type="button" class="ms-3 btn btn-danger btn-sm">Delete</button>
+          </div>
+        </div>
+    
+    <div *ngFor="let item of products">
+        <td>
+            <input [(ngModel)]="item.name"/>
+        </td>
+    </div>
+
+</div>
