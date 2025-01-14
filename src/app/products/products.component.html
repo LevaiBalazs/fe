@@ -1,6 +1,5 @@
 
 <div class="container">
-
     <div class="d-flex justify-content-between mb-4">
         <div>
           <button class="btn btn-primary me-2" (click)="switchLanguage('en')">{{translate('English')}}</button>
@@ -38,10 +37,6 @@
           </div>
         </div>
     
-    <div *ngFor="let item of products">
-        <td>
-            <input [(ngModel)]="item.name"/>
-        </td>
-    </div>
+    
 
 </div>
